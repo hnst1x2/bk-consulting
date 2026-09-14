@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; font-family: "Manrope", "Helvetica Neue", Arial, sans-serif; color: #2e1451; background: #ffffff; -webkit-font-smoothing: antialiased; }
+  a { color: #6f74e8; text-decoration: none; }
+  a:hover { color: #2e1451; }
+  * { box-sizing: border-box; }
+</style>
+</helmet>
+<div style="min-width: 0">
+<nav style="position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(46,20,81,0.08)">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <div style="width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, #9196fa 0%, #2e1451 100%); display: flex; align-items: center; justify-content: center; color: #ffffff; font-weight: 800; font-size: 14px; letter-spacing: 0.02em">BK</div>
+      <span style="font-weight: 800; font-size: 17px">BK Consulting</span>
+    </div>
+    <div style="flex: 1"></div>
+    <div style="display: flex; align-items: center; gap: 22px; flex-wrap: wrap">
+      <a href="#expertises" style="color: rgba(46,20,81,0.72); font-size: 14px; font-weight: 600">Expertises</a>
+      <a href="#tjm" style="color: rgba(46,20,81,0.72); font-size: 14px; font-weight: 600">TJM</a>
+      <a href="#references" style="color: rgba(46,20,81,0.72); font-size: 14px; font-weight: 600">Références</a>
+      <a href="#processus" style="color: rgba(46,20,81,0.72); font-size: 14px; font-weight: 600">Méthode</a>
+      <a href="#apropos" style="color: rgba(46,20,81,0.72); font-size: 14px; font-weight: 600">À propos</a>
+      <a href="#faq" style="color: rgba(46,20,81,0.72); font-size: 14px; font-weight: 600">FAQ</a>
+      <a href="#contact" style="background: #2e1451; color: #ffffff; padding: 10px 20px; border-radius: 999px; font-size: 14px; font-weight: 700; box-shadow: 0 2px 6px rgba(46,20,81,0.08)" style-hover="background: #40216e; color: #ffffff">Discutons de votre projet</a>
+    </div>
+  </div>
+</nav>
+
+<header style="background: linear-gradient(180deg, #f5f5fd 0%, #ffffff 100%); border-bottom: 1px solid rgba(46,20,81,0.06)">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 72px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 56px; align-items: center">
+    <div>
+      <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #6f74e8; margin-bottom: 18px">Développement &amp; consulting · France</div>
+      <h1 style="margin: 0 0 20px; font-size: clamp(38px, 5vw, 58px); font-weight: 800; line-height: 1.12; letter-spacing: -0.02em; text-wrap: balance">Des experts tech, <span style="background: linear-gradient(90deg, #9196fa 0%, #2e1451 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent">au juste prix</span>.</h1>
+      <p style="margin: 0 0 32px; font-size: 18px; line-height: 1.6; color: rgba(46,20,81,0.72); max-width: 520px; text-wrap: pretty">BK Consulting accompagne vos projets de développement logiciel et de conseil IT, avec des TJM compétitifs et l'exigence qui a convaincu plus de 100 clients.</p>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px">
+        <a href="#contact" style="background: #9196fa; color: #ffffff; padding: 14px 28px; border-radius: 999px; font-weight: 700; font-size: 15px; box-shadow: 0 8px 20px rgba(145,150,250,0.35)" style-hover="background: #7c82f8; color: #ffffff">Obtenir un devis</a>
+        <a href="#tjm" style="border: 1.5px solid rgba(46,20,81,0.2); color: #2e1451; padding: 14px 28px; border-radius: 999px; font-weight: 700; font-size: 15px" style-hover="border-color: #9196fa; color: #2e1451">Voir nos TJM →</a>
+      </div>
+      <div style="display: flex; gap: 24px; flex-wrap: wrap; font-size: 14px; color: rgba(46,20,81,0.6); font-weight: 600">
+        <span style="display: flex; align-items: center; gap: 7px"><i data-lucide="map-pin" style="width: 16px; height: 16px; color: #9196fa"></i>Basé en France</span>
+        <span style="display: flex; align-items: center; gap: 7px"><i data-lucide="users" style="width: 16px; height: 16px; color: #9196fa"></i>100+ clients accompagnés</span>
+        <span style="display: flex; align-items: center; gap: 7px"><i data-lucide="badge-euro" style="width: 16px; height: 16px; color: #9196fa"></i>TJM transparents</span>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; min-width: 0">
+      <div style="grid-column: 1 / -1; background: linear-gradient(135deg, #2e1451 0%, #010920 100%); border-radius: 24px; padding: 28px 30px; color: #ffffff; box-shadow: 0 16px 40px rgba(46,20,81,0.22)">
+        <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #b9bdfc; margin-bottom: 8px">Clients accompagnés</div>
+        <div style="font-size: 52px; font-weight: 800; line-height: 1">100<span style="color: #9196fa">+</span></div>
+        <div style="margin-top: 10px; font-size: 14px; color: rgba(255,255,255,0.78)">startups, PME et grands comptes, en France et à l'international</div>
+      </div>
+      <div style="background: #ffffff; border: 1px solid rgba(46,20,81,0.08); border-radius: 16px; padding: 22px 24px; box-shadow: 0 8px 20px rgba(46,20,81,0.08)">
+        <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,20,81,0.5); margin-bottom: 6px">Devis &amp; TJM</div>
+        <div style="font-size: 32px; font-weight: 800">48 h<span style="font-size: 15px; font-weight: 600; color: rgba(46,20,81,0.5)"> chrono</span></div>
+      </div>
+      <div style="background: #ffffff; border: 1px solid rgba(46,20,81,0.08); border-radius: 16px; padding: 22px 24px; box-shadow: 0 8px 20px rgba(46,20,81,0.08)">
+        <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,20,81,0.5); margin-bottom: 6px">Démarrage</div>
+        <div style="font-size: 32px; font-weight: 800">&lt; 2 <span style="font-size: 15px; font-weight: 600; color: rgba(46,20,81,0.5)">semaines</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="expertises" style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 32px">
+  <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #6f74e8; margin-bottom: 12px">Expertises</div>
+  <h2 style="margin: 0 0 14px; font-size: clamp(28px, 3.5vw, 38px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; text-wrap: balance">Du code au conseil, une seule équipe</h2>
+  <p style="margin: 0 0 44px; font-size: 16px; line-height: 1.6; color: rgba(46,20,81,0.72); max-width: 620px">En forfait, en régie ou en mission de conseil : nous intervenons là où votre projet en a besoin.</p>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
+    <sc-for list="{{ expertises }}" as="ex" hint-placeholder-count="6">
+      <div style="background: #ffffff; border: 1px solid rgba(46,20,81,0.08); border-radius: 16px; padding: 28px; box-shadow: 0 2px 6px rgba(46,20,81,0.06)" style-hover="box-shadow: 0 8px 20px rgba(46,20,81,0.12); border-color: rgba(145,150,250,0.5)">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(145,150,250,0.14); display: flex; align-items: center; justify-content: center; margin-bottom: 18px">
+          <i data-lucide="{{ ex.icon }}" style="width: 22px; height: 22px; color: #2e1451"></i>
+        </div>
+        <div style="font-size: 18px; font-weight: 700; margin-bottom: 8px">{{ ex.title }}</div>
+        <div style="font-size: 14.5px; line-height: 1.6; color: rgba(46,20,81,0.66)">{{ ex.desc }}</div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="tjm" style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 32px">
+  <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #6f74e8; margin-bottom: 12px">Tarifs</div>
+  <h2 style="margin: 0 0 14px; font-size: clamp(28px, 3.5vw, 38px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; text-wrap: balance">Des TJM clairs, sans surprise</h2>
+  <p style="margin: 0 0 44px; font-size: 16px; line-height: 1.6; color: rgba(46,20,81,0.72); max-width: 620px">Fourchettes indicatives selon le profil et la durée de mission. Devis précis sous 48 h.</p>
+  <sc-if value="{{ showTjm }}" hint-placeholder-val="{{ true }}">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px">
+      <sc-for list="{{ grilleTjm }}" as="offre" hint-placeholder-count="3">
+        <div style="background: {{ offre.bg }}; color: {{ offre.fg }}; border: 1px solid rgba(46,20,81,0.08); border-radius: 24px; padding: 32px; box-shadow: {{ offre.shadow }}; display: flex; flex-direction: column; gap: 0">
+          <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.75; margin-bottom: 10px">{{ offre.label }}</div>
+          <div style="font-size: 22px; font-weight: 800; margin-bottom: 4px">{{ offre.title }}</div>
+          <div style="font-size: 38px; font-weight: 800; margin: 14px 0 2px">{{ offre.prix }}<span style="font-size: 15px; font-weight: 600; opacity: 0.65"> € / jour</span></div>
+          <div style="font-size: 13.5px; opacity: 0.7; margin-bottom: 20px">{{ offre.sousTitre }}</div>
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14.5px; line-height: 1.5">
+            <sc-for list="{{ offre.points }}" as="pt" hint-placeholder-count="3">
+              <div style="display: flex; gap: 10px; align-items: flex-start"><i data-lucide="check" style="width: 16px; height: 16px; margin-top: 3px; color: {{ offre.check }}; flex-shrink: 0"></i><span>{{ pt }}</span></div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin: 24px 0 0; font-size: 13px; color: rgba(46,20,81,0.5)">Tarifs HT, dégressifs pour les missions longues (3 mois et plus). Forfait possible sur cahier des charges.</p>
+  </sc-if>
+  <sc-if value="{{ hideTjm }}" hint-placeholder-val="{{ false }}">
+    <div style="background: #f5f5fd; border: 1px solid rgba(46,20,81,0.08); border-radius: 24px; padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap">
+      <div>
+        <div style="font-size: 20px; font-weight: 700; margin-bottom: 6px">Grille TJM sur demande</div>
+        <div style="font-size: 15px; color: rgba(46,20,81,0.66)">Recevez notre grille complète et un devis adapté à votre besoin sous 48 h.</div>
+      </div>
+      <a href="#contact" style="background: #2e1451; color: #ffffff; padding: 13px 26px; border-radius: 999px; font-weight: 700; font-size: 15px; flex-shrink: 0" style-hover="background: #40216e; color: #ffffff">Demander la grille</a>
+    </div>
+  </sc-if>
+</section>
+
+<section id="references" style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 32px">
+  <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #6f74e8; margin-bottom: 12px">Références</div>
+  <h2 style="margin: 0 0 44px; font-size: clamp(28px, 3.5vw, 38px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; text-wrap: balance">Plus de 100 clients nous font confiance</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px">
+    <sc-for list="{{ logoSlots }}" as="slot" hint-placeholder-count="6">
+      <div style="height: 76px; border-radius: 12px; border: 1px dashed rgba(46,20,81,0.2); background: repeating-linear-gradient(45deg, #fafafe 0px, #fafafe 10px, #f2f2fb 10px, #f2f2fb 20px); display: flex; align-items: center; justify-content: center; font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: rgba(46,20,81,0.45)">logo client</div>
+    </sc-for>
+  </div>
+  <div style="margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+    <sc-for list="{{ temoignages }}" as="t" hint-placeholder-count="2">
+      <figure style="margin: 0; background: #ffffff; border: 1px solid rgba(46,20,81,0.08); border-radius: 16px; padding: 28px; box-shadow: 0 2px 6px rgba(46,20,81,0.06)">
+        <blockquote style="margin: 0 0 18px; font-size: 16px; line-height: 1.6; color: #2e1451; font-weight: 500; text-wrap: pretty">« {{ t.quote }} »</blockquote>
+        <figcaption style="display: flex; align-items: center; gap: 12px">
+          <div style="width: 40px; height: 40px; border-radius: 999px; background: linear-gradient(135deg, #d1baf6 0%, #9196fa 100%); display: flex; align-items: center; justify-content: center; color: #2e1451; font-weight: 800; font-size: 14px">{{ t.initials }}</div>
+          <div>
+            <div style="font-size: 14px; font-weight: 700">{{ t.name }}</div>
+            <div style="font-size: 13px; color: rgba(46,20,81,0.55)">{{ t.role }}</div>
+          </div>
+        </figcaption>
+      </figure>
+    </sc-for>
+  </div>
+</section>
+
+<section id="processus" style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 96px">
+  <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #6f74e8; margin-bottom: 12px">Méthode</div>
+  <h2 style="margin: 0 0 44px; font-size: clamp(28px, 3.5vw, 38px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; text-wrap: balance">De l'échange au démarrage, en 4 étapes</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px">
+    <sc-for list="{{ etapes }}" as="et" hint-placeholder-count="4">
+      <div style="border-top: 3px solid #9196fa; padding: 22px 4px 0">
+        <div style="font-size: 13px; font-weight: 800; color: #9196fa; margin-bottom: 10px">{{ et.num }}</div>
+        <div style="font-size: 17px; font-weight: 700; margin-bottom: 8px">{{ et.title }}</div>
+        <div style="font-size: 14.5px; line-height: 1.6; color: rgba(46,20,81,0.66)">{{ et.desc }}</div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="apropos" style="background: #f5f5fd; border-top: 1px solid rgba(46,20,81,0.06); border-bottom: 1px solid rgba(46,20,81,0.06)">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 56px; align-items: center">
+    <div>
+      <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #6f74e8; margin-bottom: 12px">À propos</div>
+      <h2 style="margin: 0 0 18px; font-size: clamp(28px, 3.5vw, 38px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; text-wrap: balance">Une exigence d'artisan, une échelle d'entreprise</h2>
+      <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.7; color: rgba(46,20,81,0.72); text-wrap: pretty">Fondée en France, BK Consulting réunit des consultants et développeurs sélectionnés pour leur expertise et leur sens du service. Notre conviction : un accompagnement de qualité ne devrait pas se payer au prix fort.</p>
+      <p style="margin: 0; font-size: 16px; line-height: 1.7; color: rgba(46,20,81,0.72); text-wrap: pretty">C'est cette approche — TJM justes, engagement total — qui nous a permis d'accompagner plus de 100 clients, de la startup au grand compte.</p>
+    </div>
+    <div style="display: flex; justify-content: center">
+      <div style="background: #ffffff; border: 1px solid rgba(46,20,81,0.08); border-radius: 24px; padding: 36px; box-shadow: 0 16px 40px rgba(46,20,81,0.12); text-align: center; max-width: 320px; width: 100%">
+        <img src="uploads/pasted-1789389958141-0.png" alt="CEO de BK Consulting" style="width: 128px; height: 128px; border-radius: 999px; object-fit: cover; border: 4px solid #ffffff; box-shadow: 0 0 0 3px #9196fa; margin-bottom: 18px">
+        <div style="font-size: 19px; font-weight: 800">Bilel K.</div>
+        <div style="font-size: 14px; color: rgba(46,20,81,0.6); margin-bottom: 16px">Fondateur &amp; CEO</div>
+        <div style="font-size: 14.5px; line-height: 1.6; color: rgba(46,20,81,0.72); font-style: italic; text-wrap: pretty">« Chaque mission est un engagement personnel : livrer, au juste prix, sans compromis sur la qualité. »</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 96px">
+  <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #6f74e8; margin-bottom: 12px">FAQ</div>
+  <h2 style="margin: 0 0 44px; font-size: clamp(28px, 3.5vw, 38px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; text-wrap: balance">Questions fréquentes</h2>
+  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 780px">
+    <sc-for list="{{ faq }}" as="q" hint-placeholder-count="5">
+      <details style="background: #ffffff; border: 1px solid rgba(46,20,81,0.1); border-radius: 16px; padding: 20px 24px">
+        <summary style="font-size: 16px; font-weight: 700; cursor: pointer; list-style: none">{{ q.q }}</summary>
+        <p style="margin: 14px 0 0; font-size: 15px; line-height: 1.65; color: rgba(46,20,81,0.72); text-wrap: pretty">{{ q.a }}</p>
+      </details>
+    </sc-for>
+  </div>
+</section>
+
+<section id="contact" style="background: linear-gradient(135deg, #9196fa 0%, #2e1451 60%)">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px; align-items: center">
+    <div style="color: #ffffff">
+      <h2 style="margin: 0 0 16px; font-size: clamp(28px, 3.5vw, 40px); font-weight: 800; letter-spacing: -0.01em; line-height: 1.15; text-wrap: balance">Un projet, un besoin de renfort&nbsp;?</h2>
+      <p style="margin: 0 0 28px; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.85); max-width: 460px">Décrivez-nous votre contexte : nous revenons vers vous sous 48 h avec un profil et un TJM.</p>
+      <div style="display: flex; flex-direction: column; gap: 12px; font-size: 15px; font-weight: 600">
+        <span style="display: flex; align-items: center; gap: 10px"><i data-lucide="mail" style="width: 18px; height: 18px"></i>contact@bk-consulting.fr</span>
+        <span style="display: flex; align-items: center; gap: 10px"><i data-lucide="phone" style="width: 18px; height: 18px"></i>+33 1 00 00 00 00</span>
+        <span style="display: flex; align-items: center; gap: 10px"><i data-lucide="map-pin" style="width: 18px; height: 18px"></i>France · interventions sur site et à distance</span>
+      </div>
+    </div>
+    <form style="background: #ffffff; border-radius: 24px; padding: 36px; box-shadow: 0 24px 60px rgba(1,9,32,0.3); display: flex; flex-direction: column; gap: 16px">
+      <div style="font-size: 19px; font-weight: 800; margin-bottom: 4px">Demander un devis</div>
+      <input placeholder="Nom et société" value="{{ formNom }}" onChange="{{ setNom }}" style="border: 1.5px solid rgba(46,20,81,0.16); border-radius: 12px; padding: 13px 16px; font-size: 15px; font-family: inherit; color: #2e1451; outline: none" style-focus="border-color: #9196fa; box-shadow: 0 0 0 4px rgba(145,150,250,0.2)">
+      <input placeholder="Email professionnel" type="email" value="{{ formEmail }}" onChange="{{ setEmail }}" style="border: 1.5px solid rgba(46,20,81,0.16); border-radius: 12px; padding: 13px 16px; font-size: 15px; font-family: inherit; color: #2e1451; outline: none" style-focus="border-color: #9196fa; box-shadow: 0 0 0 4px rgba(145,150,250,0.2)">
+      <textarea placeholder="Votre besoin (stack, durée, contexte…)" rows="4" value="{{ formMsg }}" onChange="{{ setMsg }}" style="border: 1.5px solid rgba(46,20,81,0.16); border-radius: 12px; padding: 13px 16px; font-size: 15px; font-family: inherit; color: #2e1451; outline: none; resize: vertical" style-focus="border-color: #9196fa; box-shadow: 0 0 0 4px rgba(145,150,250,0.2)"></textarea>
+      <button type="button" onClick="{{ envoyer }}" style="background: #9196fa; color: #ffffff; border: none; padding: 14px; border-radius: 999px; font-weight: 700; font-size: 15px; font-family: inherit; cursor: pointer" style-hover="background: #7c82f8">{{ btnLabel }}</button>
+      <div style="font-size: 12.5px; color: rgba(46,20,81,0.5); text-align: center">Réponse sous 48 h ouvrées. Vos données restent confidentielles.</div>
+    </form>
+  </div>
+</section>
+
+<footer style="background: #010920; color: rgba(255,255,255,0.7)">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 40px; display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; flex-wrap: wrap">
+    <div>
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px">
+        <div style="width: 30px; height: 30px; border-radius: 8px; background: linear-gradient(135deg, #9196fa 0%, #2e1451 100%); display: flex; align-items: center; justify-content: center; color: #ffffff; font-weight: 800; font-size: 12px">BK</div>
+        <span style="font-weight: 800; font-size: 16px; color: #ffffff">BK Consulting</span>
+      </div>
+      <div style="font-size: 14px; max-width: 320px; line-height: 1.6">Développement logiciel et conseil IT. Basé en France, au service de plus de 100 clients.</div>
+    </div>
+    <div style="display: flex; gap: 48px; flex-wrap: wrap">
+      <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+        <span style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px">Navigation</span>
+        <a href="#expertises" style="color: rgba(255,255,255,0.7)">Expertises</a>
+        <a href="#tjm" style="color: rgba(255,255,255,0.7)">TJM</a>
+        <a href="#references" style="color: rgba(255,255,255,0.7)">Références</a>
+        <a href="#contact" style="color: rgba(255,255,255,0.7)">Contact</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+        <span style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px">Contact</span>
+        <span>contact@bk-consulting.fr</span>
+        <span>+33 1 00 00 00 00</span>
+      </div>
+    </div>
+  </div>
+  <div style="border-top: 1px solid rgba(255,255,255,0.1)">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 18px 24px; font-size: 13px; color: rgba(255,255,255,0.4); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+      <span>© 2026 BK Consulting — Tous droits réservés</span>
+      <span>Mentions légales · Politique de confidentialité</span>
+    </div>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;afficherTjm&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Contenu&quot;}}">
+class Component extends DCLogic {
+  state = { nom: "", email: "", msg: "", sent: false };
+  componentDidMount() {
+    this._icons = setInterval(() => { if (window.lucide) { window.lucide.createIcons(); } }, 400);
+  }
+  componentWillUnmount() { clearInterval(this._icons); }
+  renderVals() {
+    const showTjm = this.props.afficherTjm ?? false;
+    return {
+      showTjm,
+      hideTjm: !showTjm,
+      expertises: [
+        { icon: "code-2", title: "Développement web", desc: "Applications web sur mesure, front et back : React, Node, Java, PHP, .NET. Du MVP à la plateforme critique." },
+        { icon: "smartphone", title: "Applications mobiles", desc: "Apps iOS et Android natives ou cross-platform, pensées produit et maintenues dans la durée." },
+        { icon: "database", title: "Data & intégration", desc: "Pipelines de données, API, reporting et interconnexion de vos outils métiers." },
+        { icon: "cloud", title: "Cloud & DevOps", desc: "Migration cloud, CI/CD, infrastructure as code et fiabilisation de vos environnements." },
+        { icon: "compass", title: "Conseil & architecture", desc: "Audit technique, cadrage de projet, choix de stack et accompagnement de vos équipes." },
+        { icon: "users", title: "Régie & renfort d'équipe", desc: "Des consultants intégrés à vos équipes, en quelques jours, sur site ou à distance." }
+      ],
+      grilleTjm: [
+        { label: "Profil", title: "Consultant confirmé", prix: "350 – 450", sousTitre: "2 à 5 ans d'expérience", bg: "#ffffff", fg: "#2e1451", check: "#9196fa", shadow: "0 2px 6px rgba(46,20,81,0.06)",
+          points: ["Développement front ou back", "Autonome sur un périmètre défini", "Idéal renfort d'équipe"] },
+        { label: "Le plus demandé", title: "Consultant senior", prix: "450 – 600", sousTitre: "5 à 10 ans d'expérience", bg: "linear-gradient(160deg, #2e1451 0%, #010920 100%)", fg: "#ffffff", check: "#94deab", shadow: "0 16px 40px rgba(46,20,81,0.25)",
+          points: ["Full-stack, lead technique", "Conception et revue d'architecture", "Encadrement de développeurs"] },
+        { label: "Profil", title: "Architecte / expert", prix: "600 – 750", sousTitre: "10 ans et plus", bg: "#ffffff", fg: "#2e1451", check: "#9196fa", shadow: "0 2px 6px rgba(46,20,81,0.06)",
+          points: ["Architecture et stratégie technique", "Audit, cadrage, direction technique", "Interventions ponctuelles ou récurrentes"] }
+      ],
+      logoSlots: [1, 2, 3, 4, 5, 6],
+      faq: [
+        { q: "Comment sont fixés vos TJM ?", a: "Nos TJM dépendent du profil (confirmé, senior, architecte), de la durée et du contexte de la mission. Nous communiquons notre grille complète sur simple demande, avec un devis ferme sous 48 h." },
+        { q: "Sous quel délai un consultant peut-il démarrer ?", a: "En général sous deux semaines. Pour les besoins urgents, un démarrage sous quelques jours est souvent possible selon la disponibilité des profils." },
+        { q: "Intervenez-vous sur site ou à distance ?", a: "Les deux. Nous intervenons partout en France, sur site, en hybride ou en full remote, selon votre organisation." },
+        { q: "Quels types de contrats proposez-vous ?", a: "Régie (facturation au jour), forfait sur cahier des charges, ou mission de conseil ponctuelle. Les missions longues bénéficient de TJM dégressifs." },
+        { q: "Sur quelles technologies travaillez-vous ?", a: "Principalement React, Node.js, Java, PHP, .NET, iOS/Android, ainsi que les environnements cloud AWS, Azure et GCP. Contactez-nous pour un besoin spécifique." }
+      ],
+      temoignages: [
+        { quote: "Un renfort senior opérationnel en une semaine, au TJM annoncé. La mission a été prolongée deux fois.", initials: "CL", name: "Claire L.", role: "DSI · secteur retail" },
+        { quote: "BK Consulting a repris notre plateforme legacy et livré la refonte dans les délais. Communication impeccable.", initials: "MT", name: "Marc T.", role: "CTO · éditeur SaaS" }
+      ],
+      etapes: [
+        { num: "01", title: "Échange", desc: "Un appel de 30 minutes pour comprendre votre besoin, votre stack et vos délais." },
+        { num: "02", title: "Proposition & TJM", desc: "Sous 48 h : profils proposés, TJM ferme et modalités d'intervention." },
+        { num: "03", title: "Démarrage", desc: "Onboarding en moins de deux semaines, sur site ou à distance." },
+        { num: "04", title: "Suivi", desc: "Points réguliers, reporting transparent et ajustement du dispositif si besoin." }
+      ],
+      formNom: this.state.nom,
+      formEmail: this.state.email,
+      formMsg: this.state.msg,
+      setNom: (e) => this.setState({ nom: e.target.value, sent: false }),
+      setEmail: (e) => this.setState({ email: e.target.value, sent: false }),
+      setMsg: (e) => this.setState({ msg: e.target.value, sent: false }),
+      btnLabel: this.state.sent ? "Message envoyé ✓" : "Envoyer ma demande",
+      envoyer: () => this.setState({ sent: true })
+    };
+  }
+}
+</script>
+</body>
+</html>
