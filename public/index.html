@@ -46,9 +46,65 @@
   details summary::after { content: "+"; float: right; font-weight: 400; color: #9196fa; font-size: 20px; line-height: 1; }
   details[open] summary::after { content: "–"; }
 
+  /* ===== Mobile UX enhancements ===== */
+  #menu-btn { display: none; width: 44px; height: 44px; border: none; background: transparent; color: #2e1451; align-items: center; justify-content: center; cursor: pointer; border-radius: 12px; padding: 0; }
+  #menu-btn:active { background: rgba(145,150,250,0.14); }
+  #mobile-menu { display: none; position: fixed; inset: 0; z-index: 300; background: linear-gradient(160deg, #2e1451 0%, #010920 100%); color: #ffffff; flex-direction: column; padding: 12px 16px 28px; overflow-y: auto; }
+  body.menu-open { overflow: hidden; }
+  body.menu-open #mobile-menu { display: flex; }
+  #mobile-menu .mm-link { color: #ffffff; font-size: 26px; font-weight: 800; padding: 13px 4px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; }
+  .cta-bar { display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 150; background: rgba(255,255,255,0.94); backdrop-filter: blur(12px); border-top: 1px solid rgba(46,20,81,0.1); padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); gap: 10px; }
+
   @media (max-width: 640px) {
     .hero-stats { grid-template-columns: 1fr !important; }
-    .nav-links { gap: 14px !important; font-size: 13px; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none !important; }
+    #menu-btn { display: flex; }
+    .cta-bar { display: flex; }
+    body { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+    section[id], header > div, #apropos > div, #contact > div { padding-left: 20px !important; padding-right: 20px !important; }
+    header > div { padding-top: 40px !important; padding-bottom: 36px !important; gap: 28px !important; }
+    section[id] { padding-top: 52px !important; padding-bottom: 8px !important; }
+    #processus, #faq { padding-bottom: 52px !important; }
+
+    /* Hero: full-width tap-friendly CTAs */
+    .hero-ctas { flex-direction: column; }
+    .hero-ctas a { display: flex; align-items: center; justify-content: center; min-height: 52px; font-size: 16px; padding: 0 24px !important; }
+
+    /* Expertises: compact rows (icon left, text right) */
+    .expertises-grid { gap: 10px !important; }
+    .expertises-grid .card { display: grid; grid-template-columns: 44px 1fr; gap: 3px 14px; padding: 16px !important; align-items: start; }
+    .expertises-grid .card > div:first-child { grid-row: 1 / span 2; margin-bottom: 0 !important; }
+    .expertises-grid .card > div:nth-child(2) { font-size: 16px !important; margin-bottom: 0 !important; }
+    .expertises-grid .card > div:nth-child(3) { font-size: 14px !important; }
+
+    /* TJM cards + testimonials: swipeable carousels */
+    .tjm-cards, .temoignages-grid { display: flex !important; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin: 0 -20px; padding: 4px 20px 8px; }
+    .tjm-cards::-webkit-scrollbar, .temoignages-grid::-webkit-scrollbar, .logos-grid::-webkit-scrollbar { display: none; }
+    .tjm-cards > div, .temoignages-grid > figure { flex: 0 0 82%; scroll-snap-align: start; }
+    .tjm-cards > div { padding: 24px !important; }
+
+    /* Client logos: horizontal strip */
+    .logos-grid { display: flex !important; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin: 0 -20px; padding: 4px 20px 8px; }
+    .logos-grid .logo-tile { flex: 0 0 auto; min-width: 150px; height: 64px; scroll-snap-align: start; }
+
+    /* On-request block: stacked, full-width button */
+    .tjm-on-request { flex-direction: column; align-items: stretch !important; padding: 24px !important; }
+    .tjm-on-request .btn-dark { display: flex; align-items: center; justify-content: center; min-height: 50px; }
+
+    /* CEO card: horizontal compact */
+    .ceo-card { display: flex; gap: 18px; align-items: center; text-align: left !important; max-width: none !important; padding: 24px !important; }
+    .ceo-card img { width: 72px !important; height: 72px !important; margin-bottom: 0 !important; flex-shrink: 0; }
+
+    /* Contact form: iOS-friendly fields (16px avoids zoom) */
+    #contact form { padding: 24px !important; }
+    .field { font-size: 16px !important; padding: 14px 16px !important; }
+    #devis-submit { min-height: 52px; font-size: 16px !important; }
+
+    h1 { font-size: 34px !important; }
+    h2 { font-size: 26px !important; }
   }
 </style>
 </head>
@@ -71,8 +127,35 @@
       <a class="nav-link" href="#faq" style="color: rgba(46,20,81,0.72); font-size: 14px; font-weight: 600">FAQ</a>
       <a class="btn-dark" href="#contact" style="background: #2e1451; color: #ffffff; padding: 10px 20px; border-radius: 999px; font-size: 14px; font-weight: 700; box-shadow: 0 2px 6px rgba(46,20,81,0.08)">Discutons de votre projet</a>
     </div>
+    <button id="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><i data-lucide="menu" style="width: 26px; height: 26px"></i></button>
   </div>
 </nav>
+
+<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+  <div style="display: flex; align-items: center; min-height: 48px">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <div style="width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, #9196fa 0%, #2e1451 100%); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; color: #ffffff; font-weight: 800; font-size: 14px">BK</div>
+      <span style="font-weight: 800; font-size: 16px; color: #ffffff">BK Consulting</span>
+    </div>
+    <div style="flex: 1"></div>
+    <button id="menu-close" type="button" aria-label="Fermer" style="width: 44px; height: 44px; border: none; background: rgba(255,255,255,0.1); color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 999px"><i data-lucide="x" style="width: 24px; height: 24px"></i></button>
+  </div>
+  <div style="display: flex; flex-direction: column; margin-top: 28px">
+    <a class="mm-link" href="#expertises">Expertises<i data-lucide="arrow-right" style="width: 20px; height: 20px; color: #9196fa"></i></a>
+    <a class="mm-link" href="#tjm">TJM<i data-lucide="arrow-right" style="width: 20px; height: 20px; color: #9196fa"></i></a>
+    <a class="mm-link" href="#references">Références<i data-lucide="arrow-right" style="width: 20px; height: 20px; color: #9196fa"></i></a>
+    <a class="mm-link" href="#processus">Méthode<i data-lucide="arrow-right" style="width: 20px; height: 20px; color: #9196fa"></i></a>
+    <a class="mm-link" href="#apropos">À propos<i data-lucide="arrow-right" style="width: 20px; height: 20px; color: #9196fa"></i></a>
+    <a class="mm-link" href="#faq">FAQ<i data-lucide="arrow-right" style="width: 20px; height: 20px; color: #9196fa"></i></a>
+  </div>
+  <div style="margin-top: auto; padding-top: 32px; display: flex; flex-direction: column; gap: 12px">
+    <a class="mm-link-cta" href="#contact" style="background: #9196fa; color: #ffffff; min-height: 52px; display: flex; align-items: center; justify-content: center; border-radius: 999px; font-weight: 700; font-size: 16px; box-shadow: 0 8px 20px rgba(145,150,250,0.35)">Obtenir un devis</a>
+    <div style="display: flex; gap: 12px">
+      <a href="mailto:contact@bk-consulting.fr" style="flex: 1; min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; color: #ffffff; font-weight: 600; font-size: 14px"><i data-lucide="mail" style="width: 17px; height: 17px"></i>Email</a>
+      <a href="tel:+33100000000" style="flex: 1; min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; color: #ffffff; font-weight: 600; font-size: 14px"><i data-lucide="phone" style="width: 17px; height: 17px"></i>Appeler</a>
+    </div>
+  </div>
+</div>
 
 <header style="background: linear-gradient(180deg, #f5f5fd 0%, #ffffff 100%); border-bottom: 1px solid rgba(46,20,81,0.06)">
   <div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 72px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 56px; align-items: center">
@@ -80,7 +163,7 @@
       <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #6f74e8; margin-bottom: 18px">Développement &amp; consulting · France</div>
       <h1 style="margin: 0 0 20px; font-size: clamp(38px, 5vw, 58px); font-weight: 800; line-height: 1.12; letter-spacing: -0.02em; text-wrap: balance">Des experts tech, <span style="background: linear-gradient(90deg, #9196fa 0%, #2e1451 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent">au juste prix</span>.</h1>
       <p style="margin: 0 0 32px; font-size: 18px; line-height: 1.6; color: rgba(46,20,81,0.72); max-width: 520px; text-wrap: pretty">BK Consulting accompagne vos projets de développement logiciel et de conseil IT, avec des TJM compétitifs et l'exigence qui a convaincu plus de 100 clients.</p>
-      <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px">
+      <div class="hero-ctas" style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px">
         <a class="btn-primary" href="#contact" style="background: #9196fa; color: #ffffff; padding: 14px 28px; border-radius: 999px; font-weight: 700; font-size: 15px; box-shadow: 0 8px 20px rgba(145,150,250,0.35)">Obtenir un devis</a>
         <a class="btn-outline" href="#tjm" style="border: 1.5px solid rgba(46,20,81,0.2); color: #2e1451; padding: 14px 28px; border-radius: 999px; font-weight: 700; font-size: 15px">Voir nos TJM →</a>
       </div>
@@ -112,7 +195,7 @@
   <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #6f74e8; margin-bottom: 12px">Expertises</div>
   <h2 style="margin: 0 0 14px; font-size: clamp(28px, 3.5vw, 38px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; text-wrap: balance">Du code au conseil, une seule équipe</h2>
   <p style="margin: 0 0 44px; font-size: 16px; line-height: 1.6; color: rgba(46,20,81,0.72); max-width: 620px">En forfait, en régie ou en mission de conseil : nous intervenons là où votre projet en a besoin.</p>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
+  <div class="expertises-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
 
     <div class="card" style="background: #ffffff; border: 1px solid rgba(46,20,81,0.08); border-radius: 16px; padding: 28px; box-shadow: 0 2px 6px rgba(46,20,81,0.06)">
       <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(145,150,250,0.14); display: flex; align-items: center; justify-content: center; margin-bottom: 18px"><i data-lucide="code" style="width: 22px; height: 22px; color: #2e1451"></i></div>
@@ -160,7 +243,7 @@
 
   <!-- Price grid (shown when <body data-show-tjm="true">) -->
   <div class="tjm-grid">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px">
+    <div class="tjm-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px">
 
       <div style="background: #ffffff; color: #2e1451; border: 1px solid rgba(46,20,81,0.08); border-radius: 24px; padding: 32px; box-shadow: 0 2px 6px rgba(46,20,81,0.06); display: flex; flex-direction: column">
         <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.75; margin-bottom: 10px">Profil</div>
@@ -215,14 +298,14 @@
 <section id="references" style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 32px">
   <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #6f74e8; margin-bottom: 12px">Références</div>
   <h2 style="margin: 0 0 44px; font-size: clamp(28px, 3.5vw, 38px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; text-wrap: balance">Plus de 100 clients nous font confiance</h2>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px">
+  <div class="logos-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px">
     <div class="logo-tile"><img src="assets/logos/swile.svg" alt="Swile" loading="lazy"></div>
     <div class="logo-tile"><img src="assets/logos/teads.svg" alt="Teads" loading="lazy"></div>
     <div class="logo-tile"><img src="assets/logos/septeo.svg" alt="Septeo" loading="lazy"></div>
     <div class="logo-tile"><img src="assets/logos/medincell.webp" alt="Medincell" loading="lazy"></div>
     <div class="logo-tile"><img src="assets/logos/kaliop.svg" alt="Kaliop" loading="lazy"></div>
   </div>
-  <div style="margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+  <div class="temoignages-grid" style="margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
     <figure style="margin: 0; background: #ffffff; border: 1px solid rgba(46,20,81,0.08); border-radius: 16px; padding: 28px; box-shadow: 0 2px 6px rgba(46,20,81,0.06)">
       <blockquote style="margin: 0 0 18px; font-size: 16px; line-height: 1.6; color: #2e1451; font-weight: 500; text-wrap: pretty">« Un renfort senior opérationnel en une semaine, au TJM annoncé. La mission a été prolongée deux fois. »</blockquote>
       <figcaption style="display: flex; align-items: center; gap: 12px">
@@ -282,11 +365,13 @@
       <p style="margin: 0; font-size: 16px; line-height: 1.7; color: rgba(46,20,81,0.72); text-wrap: pretty">C'est cette approche — TJM justes, engagement total — qui nous a permis d'accompagner plus de 100 clients, de la startup au grand compte.</p>
     </div>
     <div style="display: flex; justify-content: center">
-      <div style="background: #ffffff; border: 1px solid rgba(46,20,81,0.08); border-radius: 24px; padding: 36px; box-shadow: 0 16px 40px rgba(46,20,81,0.12); text-align: center; max-width: 320px; width: 100%">
+      <div class="ceo-card" style="background: #ffffff; border: 1px solid rgba(46,20,81,0.08); border-radius: 24px; padding: 36px; box-shadow: 0 16px 40px rgba(46,20,81,0.12); text-align: center; max-width: 320px; width: 100%">
         <img src="assets/ceo.png" alt="Badis K., fondateur et CEO de BK Consulting" width="128" height="128" style="width: 128px; height: 128px; border-radius: 999px; object-fit: cover; border: 4px solid #ffffff; box-shadow: 0 0 0 3px #9196fa; margin-bottom: 18px">
-        <div style="font-size: 19px; font-weight: 800">Badis K.</div>
-        <div style="font-size: 14px; color: rgba(46,20,81,0.6); margin-bottom: 16px">Fondateur &amp; CEO</div>
-        <div style="font-size: 14.5px; line-height: 1.6; color: rgba(46,20,81,0.72); font-style: italic; text-wrap: pretty">« Chaque mission est un engagement personnel : livrer, au juste prix, sans compromis sur la qualité. »</div>
+        <div>
+          <div style="font-size: 19px; font-weight: 800">Badis K.</div>
+          <div style="font-size: 14px; color: rgba(46,20,81,0.6); margin-bottom: 16px">Fondateur &amp; CEO</div>
+          <div style="font-size: 14.5px; line-height: 1.6; color: rgba(46,20,81,0.72); font-style: italic; text-wrap: pretty">« Chaque mission est un engagement personnel : livrer, au juste prix, sans compromis sur la qualité. »</div>
+        </div>
       </div>
     </div>
   </div>
@@ -325,9 +410,9 @@
       <h2 style="margin: 0 0 16px; font-size: clamp(28px, 3.5vw, 40px); font-weight: 800; letter-spacing: -0.01em; line-height: 1.15; text-wrap: balance">Un projet, un besoin de renfort&nbsp;?</h2>
       <p style="margin: 0 0 28px; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.85); max-width: 460px">Décrivez-nous votre contexte : nous revenons vers vous sous 48 h avec un profil et un TJM.</p>
       <div style="display: flex; flex-direction: column; gap: 12px; font-size: 15px; font-weight: 600">
-        <a href="mailto:contact@bk-consulting.fr" style="display: flex; align-items: center; gap: 10px; color: #ffffff"><i data-lucide="mail" style="width: 18px; height: 18px"></i>contact@bk-consulting.fr</a>
-        <a href="tel:+33100000000" style="display: flex; align-items: center; gap: 10px; color: #ffffff"><i data-lucide="phone" style="width: 18px; height: 18px"></i>+33 1 00 00 00 00</a>
-        <span style="display: flex; align-items: center; gap: 10px"><i data-lucide="map-pin" style="width: 18px; height: 18px"></i>France · interventions sur site et à distance</span>
+        <a href="mailto:contact@bk-consulting.fr" style="display: flex; align-items: center; gap: 10px; color: #ffffff; min-height: 40px"><i data-lucide="mail" style="width: 18px; height: 18px"></i>contact@bk-consulting.fr</a>
+        <a href="tel:+33100000000" style="display: flex; align-items: center; gap: 10px; color: #ffffff; min-height: 40px"><i data-lucide="phone" style="width: 18px; height: 18px"></i>+33 1 00 00 00 00</a>
+        <span style="display: flex; align-items: center; gap: 10px; min-height: 40px"><i data-lucide="map-pin" style="width: 18px; height: 18px"></i>France · interventions sur site et à distance</span>
       </div>
     </div>
     <form id="devis-form" novalidate style="background: #ffffff; border-radius: 24px; padding: 36px; box-shadow: 0 24px 60px rgba(1,9,32,0.3); display: flex; flex-direction: column; gap: 16px">
@@ -374,11 +459,37 @@
 </footer>
 </div>
 
+<!-- Sticky mobile CTA bar -->
+<div class="cta-bar">
+  <a class="btn-primary" href="#contact" style="flex: 1; background: #9196fa; color: #ffffff; min-height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 999px; font-weight: 700; font-size: 15px; box-shadow: 0 8px 20px rgba(145,150,250,0.35)">Obtenir un devis</a>
+  <a href="tel:+33100000000" aria-label="Appeler" style="width: 48px; height: 48px; border: 1.5px solid rgba(46,20,81,0.2); border-radius: 999px; color: #2e1451; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><i data-lucide="phone" style="width: 20px; height: 20px"></i></a>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js"></script>
 <script>
   (function () {
     if (window.lucide) { window.lucide.createIcons(); }
 
+    /* Mobile menu */
+    var menuBtn = document.getElementById("menu-btn");
+    var menuClose = document.getElementById("menu-close");
+    var mobileMenu = document.getElementById("mobile-menu");
+    function setMenu(open) {
+      document.body.classList.toggle("menu-open", open);
+      if (menuBtn) { menuBtn.setAttribute("aria-expanded", open ? "true" : "false"); }
+    }
+    if (menuBtn) { menuBtn.addEventListener("click", function () { setMenu(true); }); }
+    if (menuClose) { menuClose.addEventListener("click", function () { setMenu(false); }); }
+    if (mobileMenu) {
+      mobileMenu.querySelectorAll("a[href^='#']").forEach(function (link) {
+        link.addEventListener("click", function () { setMenu(false); });
+      });
+    }
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") { setMenu(false); }
+    });
+
+    /* Devis form */
     var CONTACT_EMAIL = "contact@bk-consulting.fr";
     var DEFAULT_BUTTON = "Envoyer ma demande";
     var DEFAULT_HINT = "Réponse sous 48 h ouvrées. Vos données restent confidentielles.";
