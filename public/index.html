@@ -31,6 +31,12 @@
   .nav-link:hover { color: #2e1451 !important; }
   .footer-link:hover { color: #ffffff !important; }
 
+  /* Client logos */
+  .logo-tile { height: 76px; padding: 18px 26px; border-radius: 12px; background: #ffffff; border: 1px solid rgba(46,20,81,0.08); box-shadow: 0 2px 6px rgba(46,20,81,0.04); display: flex; align-items: center; justify-content: center; transition: border-color .2s ease, box-shadow .2s ease; }
+  .logo-tile img { height: 34px; width: auto; max-width: 100%; object-fit: contain; filter: grayscale(1); opacity: 0.62; transition: filter .25s ease, opacity .25s ease; }
+  .logo-tile:hover { border-color: rgba(145,150,250,0.5); box-shadow: 0 8px 20px rgba(46,20,81,0.10); }
+  .logo-tile:hover img { filter: none; opacity: 1; }
+
   /* TJM section toggle: set data-show-tjm="true" on <body> to display the price grid instead of the on-request block */
   body[data-show-tjm="false"] .tjm-grid { display: none; }
   body[data-show-tjm="true"]  .tjm-on-request { display: none; }
@@ -209,13 +215,12 @@
 <section id="references" style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 32px">
   <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #6f74e8; margin-bottom: 12px">Références</div>
   <h2 style="margin: 0 0 44px; font-size: clamp(28px, 3.5vw, 38px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; text-wrap: balance">Plus de 100 clients nous font confiance</h2>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px">
-    <div style="height: 76px; border-radius: 12px; border: 1px dashed rgba(46,20,81,0.2); background: repeating-linear-gradient(45deg, #fafafe 0px, #fafafe 10px, #f2f2fb 10px, #f2f2fb 20px); display: flex; align-items: center; justify-content: center; font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: rgba(46,20,81,0.45)">logo client</div>
-    <div style="height: 76px; border-radius: 12px; border: 1px dashed rgba(46,20,81,0.2); background: repeating-linear-gradient(45deg, #fafafe 0px, #fafafe 10px, #f2f2fb 10px, #f2f2fb 20px); display: flex; align-items: center; justify-content: center; font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: rgba(46,20,81,0.45)">logo client</div>
-    <div style="height: 76px; border-radius: 12px; border: 1px dashed rgba(46,20,81,0.2); background: repeating-linear-gradient(45deg, #fafafe 0px, #fafafe 10px, #f2f2fb 10px, #f2f2fb 20px); display: flex; align-items: center; justify-content: center; font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: rgba(46,20,81,0.45)">logo client</div>
-    <div style="height: 76px; border-radius: 12px; border: 1px dashed rgba(46,20,81,0.2); background: repeating-linear-gradient(45deg, #fafafe 0px, #fafafe 10px, #f2f2fb 10px, #f2f2fb 20px); display: flex; align-items: center; justify-content: center; font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: rgba(46,20,81,0.45)">logo client</div>
-    <div style="height: 76px; border-radius: 12px; border: 1px dashed rgba(46,20,81,0.2); background: repeating-linear-gradient(45deg, #fafafe 0px, #fafafe 10px, #f2f2fb 10px, #f2f2fb 20px); display: flex; align-items: center; justify-content: center; font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: rgba(46,20,81,0.45)">logo client</div>
-    <div style="height: 76px; border-radius: 12px; border: 1px dashed rgba(46,20,81,0.2); background: repeating-linear-gradient(45deg, #fafafe 0px, #fafafe 10px, #f2f2fb 10px, #f2f2fb 20px); display: flex; align-items: center; justify-content: center; font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: rgba(46,20,81,0.45)">logo client</div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px">
+    <div class="logo-tile"><img src="assets/logos/swile.svg" alt="Swile" loading="lazy"></div>
+    <div class="logo-tile"><img src="assets/logos/teads.svg" alt="Teads" loading="lazy"></div>
+    <div class="logo-tile"><img src="assets/logos/septeo.svg" alt="Septeo" loading="lazy"></div>
+    <div class="logo-tile"><img src="assets/logos/medincell.webp" alt="Medincell" loading="lazy"></div>
+    <div class="logo-tile"><img src="assets/logos/kaliop.svg" alt="Kaliop" loading="lazy"></div>
   </div>
   <div style="margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
     <figure style="margin: 0; background: #ffffff; border: 1px solid rgba(46,20,81,0.08); border-radius: 16px; padding: 28px; box-shadow: 0 2px 6px rgba(46,20,81,0.06)">
